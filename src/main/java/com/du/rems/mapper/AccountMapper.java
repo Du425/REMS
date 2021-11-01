@@ -2,6 +2,10 @@ package com.du.rems.mapper;
 
 import com.du.rems.entity.Account;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * <p>
@@ -11,6 +15,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author Du425
  * @since 2021-10-31
  */
+@Mapper
 public interface AccountMapper extends BaseMapper<Account> {
 
 }
