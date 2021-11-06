@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * </p>
  *
  * @author Du425
- * @since 2021-10-31
+ * @since 2021-11-06
  */
 @ApiModel(value = "Record对象", description = "")
 public class Record implements Serializable {
@@ -24,11 +24,11 @@ public class Record implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    private BigDecimal amount;
+    private BigDecimal spendMoney;
 
     private Integer userId;
 
-    private Integer typeId;
+    private Integer categoryId;
 
     private LocalDateTime time;
 
@@ -45,12 +45,12 @@ public class Record implements Serializable {
         this.id = id;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
+    public BigDecimal getSpendMoney() {
+        return spendMoney;
     }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
+    public void setSpendMoney(BigDecimal spendMoney) {
+        this.spendMoney = spendMoney;
     }
 
     public Integer getUserId() {
@@ -61,12 +61,12 @@ public class Record implements Serializable {
         this.userId = userId;
     }
 
-    public Integer getTypeId() {
-        return typeId;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
     public LocalDateTime getTime() {
@@ -97,9 +97,9 @@ public class Record implements Serializable {
     public String toString() {
         return "Record{" +
         "id=" + id +
-        ", amount=" + amount +
+        ", spendMoney=" + spendMoney +
         ", userId=" + userId +
-        ", typeId=" + typeId +
+        ", categoryId=" + categoryId +
         ", time=" + time +
         ", remarks=" + remarks +
         ", accountId=" + accountId +

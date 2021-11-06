@@ -6,9 +6,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * <p>
@@ -16,10 +13,8 @@ import lombok.NoArgsConstructor;
  * </p>
  *
  * @author Du425
- * @since 2021-10-31
+ * @since 2021-11-06
  */
-@Data
-
 @ApiModel(value = "Account对象", description = "")
 public class Account implements Serializable {
 
@@ -34,12 +29,6 @@ public class Account implements Serializable {
 
     private BigDecimal amount;
 
-    public Account(Integer id, String type, Integer userId, BigDecimal amount) {
-        this.id = id;
-        this.type = type;
-        this.userId = userId;
-        this.amount = amount;
-    }
 
     public Integer getId() {
         return id;

@@ -1,16 +1,15 @@
 package com.du.rems.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.du.rems.entity.User;
 import com.du.rems.mapper.UserMapper;
-import io.swagger.annotations.Api;
+import com.du.rems.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -20,46 +19,53 @@ import java.util.List;
  * </p>
  *
  * @author Du425
- * @since 2021-10-31
+ * @since 2021-11-06
  */
-@Controller
+@RestController
 @RequestMapping("/user")
-@Api(tags = "用户管理")
 public class UserController {
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private IUserService userService;
 
     @GetMapping("/queryUserList")
     public List<User> queryUserList(){
-        return userMapper.selectList(null);
-    }
-    @GetMapping("/addUser")
-    public String addUser(@RequestBody User user){
-        if(userMapper.insert(user)==1) {
-            return "insert success";
-        }else{
-            return "insert fail";
+        List<User> userList = userMapper.queryUserList();
+        for (User user : userList) {
+            System.out.println(user);
         }
+        return userList;
     }
-    @GetMapping("deleteUser")
-    public String deleteUser(@RequestParam int id){
-        if(userMapper.deleteById(id)==1) {
-            return "delete success";
-        }else {
-            return "delete fail";
-        }
-    }
-    @GetMapping("updateUser")
-    public String updateUser(@RequestBody User user) {
-        if (userMapper.updateById(user) == 1) {
-            return "update success";
+
+    @PostMapping("/addUser")
+    public String addUser(User user){
+        if (userMapper.insert(user) == 1){
+            return "注册成功";
         } else {
-            return "update fail";
+            return "注册失败";
         }
     }
-    @GetMapping("queryUserById")
-    public User queryUserById(@RequestParam int id) {
-        return userMapper.selectById(id);
+    @DeleteMapping("/deleteUser")
+    public String deleteUser(User user){
+        if (userService.deleteUserByIdOrUsername(user)==1){
+            return "删除成功";
+        }else {
+            return "删除失败";
+        }
+
+    }
+    @PutMapping("/updateUser")
+    public String updateUser(User user){
+        int update = userMapper.updateById(user);
+        if (update==1){
+            return "修改成功";
+        }else {
+            return "修改失败";
+        }
+
+//        userMapper.update();
+
     }
 }
 

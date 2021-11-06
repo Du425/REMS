@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author Du425
- * @since 2021-10-31
+ * @since 2021-11-06
  */
 public interface IRecordService extends IService<Record> {
-
+    int queryRecordById(Record record);
 }

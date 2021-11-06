@@ -51,7 +51,7 @@ public class CodeGenerator {
                                 .other("other")
                                 .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "D://java-code/REMS/src/main/resources/mapper")))
                 // 策略配置
-                .strategyConfig(builder -> builder.addInclude("account","record","user"))
+                .strategyConfig(builder -> builder.addInclude("account","record","user","category"))
 
 //
 

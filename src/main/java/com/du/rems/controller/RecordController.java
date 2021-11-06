@@ -2,17 +2,15 @@ package com.du.rems.controller;
 
 
 import com.du.rems.entity.Record;
-import com.du.rems.entity.User;
 import com.du.rems.mapper.RecordMapper;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import com.du.rems.service.IRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -22,49 +20,48 @@ import java.util.List;
  * </p>
  *
  * @author Du425
- * @since 2021-10-31
+ * @since 2021-11-06
  */
 @Controller
 @RequestMapping("/record")
-@Api(value = "/record",tags = "单笔记录")
 public class RecordController {
     @Autowired
     private RecordMapper recordMapper;
+    @Autowired
+    private IRecordService recordService;
 
     @GetMapping("/queryRecordList")
-    @ApiOperation(value = "查询",notes = "每条记录查询")
     public List<Record> queryRecordList(){
-       return recordMapper.selectList(null);
-
-    }
-    @GetMapping("/addRecord")
-    public String addRecord(@RequestBody Record record) {
-        if (recordMapper.insert(record) == 1) {
-            return "add success";
-        } else {
-            return "fail";
+        List<Record> recordList = recordMapper.queryRecordList();
+        for (Record record: recordList){
+            System.out.println(record);
         }
+        return recordList;
     }
 
-    @GetMapping("deleteRecordr")
-    public String deleteRecord(@RequestParam int id) {
-        if (recordMapper.deleteById(id) == 1) {
-            return "delete success";
-        }else{
-            return "delete fail";
+    @GetMapping("/queryRecordById")
+    public String queryRecordById(Record record){
+        if (){
+            System.out.println(record);
         }
     }
-    @GetMapping("updateRecord")
-    public String updateRecord(@RequestBody Record record) {
-        if (recordMapper.updateById(record) == 1) {
-            return "update success";
-        } else {
-            return "update fail";
+
+    @PostMapping("/addRecord")
+    public String addRecord(Record record){
+        if (recordMapper.insert(record)==1){
+            return "添加成功";
+        }else {
+            return "添加失败";
         }
     }
-    @GetMapping("queryRecordById")
-    public Record queryRecordById(@RequestParam int id){
-        return recordMapper.selectById(id);
+
+    @DeleteMapping("/deleteRecord")
+    public String deleteUser(Record record){
+        if (recordService.queryRecordById(record)==1){
+            return "查询成功";
+        }else {
+            return "查询失败";
+        }
     }
 
 

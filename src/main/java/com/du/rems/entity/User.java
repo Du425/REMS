@@ -3,6 +3,8 @@ package com.du.rems.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -12,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * </p>
  *
  * @author Du425
- * @since 2021-10-31
+ * @since 2021-11-06
  */
 @ApiModel(value = "User对象", description = "")
 public class User implements Serializable {
@@ -92,4 +94,6 @@ public class User implements Serializable {
         ", email=" + email +
         "}";
     }
+
+
 }

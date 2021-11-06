@@ -1,8 +1,8 @@
 package com.du.rems.service.impl;
 
-import com.du.rems.entity.Account;
-import com.du.rems.mapper.AccountMapper;
-import com.du.rems.service.IAccountService;
+import com.du.rems.entity.Category;
+import com.du.rems.mapper.CategoryMapper;
+import com.du.rems.service.ICategoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2021-11-06
  */
 @Service
-public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> implements IAccountService {
+public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> implements ICategoryService {
 
 }

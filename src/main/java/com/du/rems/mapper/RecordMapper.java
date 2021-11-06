@@ -13,11 +13,13 @@ import java.util.List;
  * </p>
  *
  * @author Du425
- * @since 2021-10-31
+ * @since 2021-11-06
  */
 @Mapper
+@Repository
 public interface RecordMapper extends BaseMapper<Record> {
 
+    List<Record> queryRecordList();
 
-
+    int updateById();
 }

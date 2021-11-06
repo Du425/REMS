@@ -1,6 +1,6 @@
 package com.du.rems.service;
 
-import com.du.rems.entity.Account;
+import com.du.rems.entity.Category;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author Du425
  * @since 2021-11-06
  */
-public interface IAccountService extends IService<Account> {
+public interface ICategoryService extends IService<Category> {
 
 }

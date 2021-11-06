@@ -1,6 +1,6 @@
 package com.du.rems.mapper;
 
-import com.du.rems.entity.Account;
+import com.du.rems.entity.Category;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author Du425
  * @since 2021-11-06
  */
-public interface AccountMapper extends BaseMapper<Account> {
+public interface CategoryMapper extends BaseMapper<Category> {
 
 }
