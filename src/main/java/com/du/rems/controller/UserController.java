@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.du.rems.entity.User;
 import com.du.rems.mapper.UserMapper;
+import com.du.rems.response.CommonResult;
 import com.du.rems.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,38 +31,38 @@ public class UserController {
     private IUserService userService;
 
     @GetMapping("/queryUserList")
-    public List<User> queryUserList(){
+    public CommonResult queryUserList(){
         List<User> userList = userMapper.queryUserList();
         for (User user : userList) {
             System.out.println(user);
         }
-        return userList;
+        return CommonResult.success(userList);
     }
 
     @PostMapping("/addUser")
-    public String addUser(User user){
+    public CommonResult addUser(User user){
         if (userMapper.insert(user) == 1){
-            return "注册成功";
+            return  CommonResult.success("注册成功",user) ;
         } else {
-            return "注册失败";
+            return CommonResult.failed("注册失败") ;
         }
     }
     @DeleteMapping("/deleteUser")
-    public String deleteUser(User user){
+    public CommonResult deleteUser(User user){
         if (userService.deleteUserByIdOrUsername(user)==1){
-            return "删除成功";
+            return CommonResult.success("删除成功") ;
         }else {
-            return "删除失败";
+            return CommonResult.failed("删除失败");
         }
 
     }
     @PutMapping("/updateUser")
-    public String updateUser(User user){
+    public CommonResult updateUser(User user){
         int update = userMapper.updateById(user);
         if (update==1){
-            return "修改成功";
+            return CommonResult.success("修改成功",user) ;
         }else {
-            return "修改失败";
+            return CommonResult.failed("修改失败");
         }
 
 //        userMapper.update();

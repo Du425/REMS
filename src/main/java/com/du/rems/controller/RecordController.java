@@ -3,6 +3,7 @@ package com.du.rems.controller;
 
 import com.du.rems.entity.Record;
 import com.du.rems.mapper.RecordMapper;
+import com.du.rems.response.CommonResult;
 import com.du.rems.service.IRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,36 +32,43 @@ public class RecordController {
     private IRecordService recordService;
 
     @GetMapping("/queryRecordList")
-    public List<Record> queryRecordList(){
+    public CommonResult queryRecordList(){
         List<Record> recordList = recordMapper.queryRecordList();
         for (Record record: recordList){
             System.out.println(record);
         }
-        return recordList;
+        return CommonResult.success(recordList);
     }
 
     @GetMapping("/queryRecordById")
-    public String queryRecordById(Record record){
-        if (){
-            System.out.println(record);
-        }
+    public CommonResult queryRecordById(Integer id) {
+
+        return CommonResult.success(recordMapper.selectById(id)) ;
     }
 
     @PostMapping("/addRecord")
-    public String addRecord(Record record){
+    public CommonResult addRecord(Record record){
         if (recordMapper.insert(record)==1){
-            return "添加成功";
+            return CommonResult.success("添加成功",record) ;
         }else {
-            return "添加失败";
+            return CommonResult.failed("添加失败");
         }
     }
 
     @DeleteMapping("/deleteRecord")
-    public String deleteUser(Record record){
-        if (recordService.queryRecordById(record)==1){
-            return "查询成功";
+    public CommonResult deleteUser(Integer id){
+        if (recordMapper.deleteById(id)==1){
+            return CommonResult.success("删除成功");
         }else {
-            return "查询失败";
+            return CommonResult.failed("删除失败");
+        }
+    }
+    @PostMapping("/updateRecordById")
+    public CommonResult updateRecordById(Record record){
+        if (recordMapper.updateById(record)==1){
+            return CommonResult.success("更新成功",record);
+        }else {
+            return CommonResult.failed("更新失败");
         }
     }
 
