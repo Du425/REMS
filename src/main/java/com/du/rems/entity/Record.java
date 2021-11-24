@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * <p>
@@ -24,7 +23,7 @@ public class Record implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    private BigDecimal spendMoney;
+    private double spendMoney;
 
     private Integer userId;
 
@@ -45,11 +44,11 @@ public class Record implements Serializable {
         this.id = id;
     }
 
-    public BigDecimal getSpendMoney() {
+    public double getSpendMoney() {
         return spendMoney;
     }
 
-    public void setSpendMoney(BigDecimal spendMoney) {
+    public void setSpendMoney(double spendMoney) {
         this.spendMoney = spendMoney;
     }
 

@@ -34,6 +34,12 @@ public class User implements Serializable {
 
     private String email;
 
+    private double sumMoney;
+
+    private double moneySpend;
+
+
+
 
     public Integer getId() {
         return id;
@@ -81,6 +87,22 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public double getSumMoney() {
+        return sumMoney;
+    }
+
+    public void setSumMoney(double sumMoney) {
+        this.sumMoney = sumMoney;
+    }
+
+    public double getMoneySpend() {
+        return moneySpend;
+    }
+
+    public void setMoneySpend(double moneySpend) {
+        this.moneySpend = moneySpend;
     }
 
     @Override

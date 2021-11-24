@@ -79,9 +79,6 @@ public class UserController {
         }else {
             return CommonResult.failed("修改失败");
         }
-
-//        userMapper.update();
-
     }
 }
 

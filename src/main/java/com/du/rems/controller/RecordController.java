@@ -1,8 +1,11 @@
 package com.du.rems.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.du.rems.entity.Record;
+import com.du.rems.entity.User;
 import com.du.rems.mapper.RecordMapper;
+import com.du.rems.mapper.UserMapper;
 import com.du.rems.response.CommonResult;
 import com.du.rems.service.IRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +31,9 @@ public class RecordController {
     @Autowired
     private IRecordService recordService;
 
+    @Autowired
+    private UserMapper userMapper;
+
     @GetMapping("/queryRecordList")
     public CommonResult queryRecordList(){
         List<Record> recordList = recordMapper.queryRecordList();
@@ -44,8 +50,17 @@ public class RecordController {
     }
 
     @PostMapping("/addRecord")
-    public CommonResult addRecord(Record record){
+    public CommonResult addRecord(@RequestBody Record record){
+
+//        QueryWrapper<Record> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.eq("user_id",record.getUserId());
+//        Record record1 = recordMapper.selectOne(queryWrapper);
+//
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id",record.getUserId());
+        User user = userMapper.selectOne(queryWrapper);
         if (recordMapper.insert(record)==1){
+            user.setMoneySpend(user.getMoneySpend()+record.getSpendMoney());
             return CommonResult.success("添加成功",record) ;
         }else {
             return CommonResult.failed("添加失败");
