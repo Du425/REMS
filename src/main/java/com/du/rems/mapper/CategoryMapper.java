@@ -19,7 +19,5 @@ import java.util.List;
 @Repository
 public interface CategoryMapper extends BaseMapper<Category> {
 
-    List<Category> queryCategoryList();
 
-    int updateById();
 }

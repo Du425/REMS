@@ -6,10 +6,7 @@ import com.du.rems.entity.Record;
 import com.du.rems.mapper.CategoryMapper;
 import com.du.rems.response.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
 
@@ -23,7 +20,7 @@ import java.util.List;
  * @author Du425
  * @since 2021-11-06
  */
-@Controller
+@RestController
 @RequestMapping("/category")
 public class CategoryController {
     @Autowired
@@ -31,7 +28,7 @@ public class CategoryController {
 
     @GetMapping("/queryCategoryList")
     public CommonResult queryCategoryList(){
-        List<Category> categoryList = categoryMapper.queryCategoryList();
+        List<Category> categoryList = categoryMapper.selectList(null);
         for (Category category : categoryList) {
             System.out.println(category);
         }

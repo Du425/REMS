@@ -34,7 +34,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             User user1 = userMapper.selectOne(queryWrapper.select("id"));
             id = user1.getId();
         }
-        int i = userMapper.deleteById(id);
-        return i;
+        return userMapper.deleteById(id);
     }
 }

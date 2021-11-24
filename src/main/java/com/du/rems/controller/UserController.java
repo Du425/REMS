@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -32,15 +33,29 @@ public class UserController {
 
     @GetMapping("/queryUserList")
     public CommonResult queryUserList(){
-        List<User> userList = userMapper.queryUserList();
+        List<User> userList = userMapper.selectList(null);
         for (User user : userList) {
             System.out.println(user);
         }
         return CommonResult.success(userList);
     }
+    @GetMapping("/queryUser")
+    public CommonResult queryUser(@RequestBody User user){
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id",user.getId())
+                .or().eq("username",user.getUsername())
+                .or().eq("telephone",user.getTelephone())
+                .or().eq("email",user.getEmail());
+        User user1 = userMapper.selectOne(queryWrapper);
+        if (user1!= null){
+            return CommonResult.success("查询成功",user1);
+        }else {
+            return CommonResult.failed();
+        }
+    }
 
     @PostMapping("/addUser")
-    public CommonResult addUser(User user){
+    public CommonResult addUser(@RequestBody User user){
         if (userMapper.insert(user) == 1){
             return  CommonResult.success("注册成功",user) ;
         } else {
