@@ -1,6 +1,7 @@
 package com.du.rems.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.du.rems.entity.Account;
 import com.du.rems.mapper.AccountMapper;
 import com.du.rems.response.CommonResult;
@@ -29,7 +30,8 @@ public class AccountController {
 
     @GetMapping("/queryAccountList")
     public CommonResult queryAccountList(){
-        List<Account> accountList = accountMapper.queryAccountList();
+        QueryWrapper<Account> objectQueryWrapper = new QueryWrapper<>(null);
+        List<Account> accountList = accountMapper.selectList(objectQueryWrapper);
         for (Account account : accountList) {
             System.out.println(account);
         }
@@ -47,7 +49,8 @@ public class AccountController {
 
     @PostMapping("/updateAccount")
     public CommonResult updateAccount(Account account){
-        if (accountMapper.update(account)){
+        int update = accountMapper.updateById(account);
+        if (update==1){
             return CommonResult.success("修改成功",account);
         }else {
             return CommonResult.failed("修改失败");

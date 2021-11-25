@@ -19,7 +19,5 @@ import java.util.List;
 @Repository
 public interface AccountMapper extends BaseMapper<Account> {
 
-    List<Account> queryAccountList();
 
-    boolean update(Account account);
 }
