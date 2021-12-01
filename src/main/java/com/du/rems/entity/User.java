@@ -5,8 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 /**
  * <p>
@@ -17,6 +19,8 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2021-11-06
  */
 @ApiModel(value = "User对象", description = "")
+@Data
+@TableName("user")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;

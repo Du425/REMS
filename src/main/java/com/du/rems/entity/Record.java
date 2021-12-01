@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
+import lombok.Data;
 
 /**
  * <p>
@@ -16,12 +19,14 @@ import io.swagger.annotations.ApiModel;
  * @since 2021-11-06
  */
 @ApiModel(value = "Record对象", description = "")
+@Data
+@TableName("record")
 public class Record implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    private Integer rid;
 
     private double spendMoney;
 
@@ -36,12 +41,12 @@ public class Record implements Serializable {
     private Integer accountId;
 
 
-    public Integer getId() {
-        return id;
+    public Integer getRid() {
+        return rid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setRid(Integer rid) {
+        this.rid = rid;
     }
 
     public double getSpendMoney() {
@@ -95,13 +100,13 @@ public class Record implements Serializable {
     @Override
     public String toString() {
         return "Record{" +
-        "id=" + id +
-        ", spendMoney=" + spendMoney +
-        ", userId=" + userId +
-        ", categoryId=" + categoryId +
-        ", time=" + time +
-        ", remarks=" + remarks +
-        ", accountId=" + accountId +
-        "}";
+                "rid=" + rid +
+                ", spendMoney=" + spendMoney +
+                ", userId=" + userId +
+                ", categoryId=" + categoryId +
+                ", time=" + time +
+                ", remarks='" + remarks + '\'' +
+                ", accountId=" + accountId +
+                '}';
     }
 }

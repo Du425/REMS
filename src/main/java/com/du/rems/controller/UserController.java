@@ -1,6 +1,7 @@
 package com.du.rems.controller;
 
 
+import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.du.rems.entity.User;
@@ -56,6 +57,10 @@ public class UserController {
 
     @PostMapping("/addUser")
     public CommonResult addUser(@RequestBody User user){
+        String rawPassword = user.getPassword();
+        String password = SecureUtil.md5(rawPassword);
+        SecureUtil.md5(password);
+        user.setPassword(password);
         if (userMapper.insert(user) == 1){
             return  CommonResult.success("注册成功",user) ;
         } else {
