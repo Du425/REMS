@@ -3,12 +3,9 @@ package com.du.rems.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
-import java.util.List;
-
-import com.baomidou.mybatisplus.annotation.TableName;
+import java.math.BigDecimal;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 
 /**
  * <p>
@@ -16,11 +13,9 @@ import lombok.Data;
  * </p>
  *
  * @author Du425
- * @since 2021-11-06
+ * @since 2021-12-01
  */
 @ApiModel(value = "User对象", description = "")
-@Data
-@TableName("user")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,11 +33,9 @@ public class User implements Serializable {
 
     private String email;
 
-    private double sumMoney;
+    private BigDecimal sumMoney;
 
-    private double moneySpend;
-
-
+    private BigDecimal moneySpend;
 
 
     public Integer getId() {
@@ -93,19 +86,19 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public double getSumMoney() {
+    public BigDecimal getSumMoney() {
         return sumMoney;
     }
 
-    public void setSumMoney(double sumMoney) {
+    public void setSumMoney(BigDecimal sumMoney) {
         this.sumMoney = sumMoney;
     }
 
-    public double getMoneySpend() {
+    public BigDecimal getMoneySpend() {
         return moneySpend;
     }
 
-    public void setMoneySpend(double moneySpend) {
+    public void setMoneySpend(BigDecimal moneySpend) {
         this.moneySpend = moneySpend;
     }
 
@@ -118,8 +111,8 @@ public class User implements Serializable {
         ", password=" + password +
         ", telephone=" + telephone +
         ", email=" + email +
+        ", sumMoney=" + sumMoney +
+        ", moneySpend=" + moneySpend +
         "}";
     }
-
-
 }

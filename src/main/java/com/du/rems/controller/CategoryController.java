@@ -1,6 +1,4 @@
 package com.du.rems.controller;
-
-
 import com.du.rems.entity.Category;
 import com.du.rems.entity.Record;
 import com.du.rems.mapper.CategoryMapper;
@@ -37,7 +35,7 @@ public class CategoryController {
 
     @GetMapping("/queryCategoryById")
     public CommonResult queryCategoryById(Integer id){
-         return CommonResult.success(categoryMapper.selectById(id));
+        return CommonResult.success(categoryMapper.selectById(id));
     }
 
     @PostMapping("/addCategory")
@@ -68,4 +66,3 @@ public class CategoryController {
     }
 
 }
-

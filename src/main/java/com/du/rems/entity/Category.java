@@ -3,11 +3,8 @@ package com.du.rems.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
-
-import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 
 /**
  * <p>
@@ -15,27 +12,25 @@ import lombok.Data;
  * </p>
  *
  * @author Du425
- * @since 2021-11-06
+ * @since 2021-12-01
  */
-@Data
-@TableName("category")
 @ApiModel(value = "Category对象", description = "")
 public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "cid", type = IdType.AUTO)
+    private Integer cid;
 
     private String categoryName;
 
 
-    public Integer getId() {
-        return id;
+    public Integer getCid() {
+        return cid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCid(Integer cid) {
+        this.cid = cid;
     }
 
     public String getCategoryName() {
@@ -49,7 +44,7 @@ public class Category implements Serializable {
     @Override
     public String toString() {
         return "Category{" +
-        "id=" + id +
+        "cid=" + cid +
         ", categoryName=" + categoryName +
         "}";
     }

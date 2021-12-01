@@ -3,9 +3,6 @@ package com.du.rems.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
-import java.math.BigDecimal;
-
-import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -16,31 +13,26 @@ import lombok.Data;
  * </p>
  *
  * @author Du425
- * @since 2021-11-06
+ * @since 2021-12-01
  */
 @ApiModel(value = "Account对象", description = "")
 @Data
-@TableName("account")
 public class Account implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "aid", type = IdType.AUTO)
+    private Integer aid;
 
     private String type;
 
-    private Integer userId;
 
-    private BigDecimal amount;
-
-
-    public Integer getId() {
-        return id;
+    public Integer getAid() {
+        return aid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setAid(Integer aid) {
+        this.aid = aid;
     }
 
     public String getType() {
@@ -51,29 +43,11 @@ public class Account implements Serializable {
         this.type = type;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
     @Override
     public String toString() {
         return "Account{" +
-        "id=" + id +
+        "aid=" + aid +
         ", type=" + type +
-        ", userId=" + userId +
-        ", amount=" + amount +
         "}";
     }
 }

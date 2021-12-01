@@ -31,7 +31,7 @@ public class AccountController {
     AccountMapper accountMapper;
 
     @GetMapping("/queryAccountList")
-    public CommonResult queryAccountList(){
+    public CommonResult queryAccountList() {
         QueryWrapper<Account> objectQueryWrapper = new QueryWrapper<>(null);
         List<Account> accountList = accountMapper.selectList(objectQueryWrapper);
         for (Account account : accountList) {
@@ -41,41 +41,39 @@ public class AccountController {
     }
 
     @GetMapping("/queryAccountById")
-    public CommonResult queryAccountById(Integer id){
-        if (accountMapper.selectById(id)==null){
+    public CommonResult queryAccountById(Integer id) {
+        if (accountMapper.selectById(id) == null) {
             return CommonResult.failed("查询失败");
-        }else {
+        } else {
             return CommonResult.success(accountMapper.selectById(id));
         }
     }
 
     @PostMapping("/updateAccount")
-    public CommonResult updateAccount(Account account){
+    public CommonResult updateAccount(Account account) {
         int update = accountMapper.updateById(account);
-        if (update==1){
-            return CommonResult.success("修改成功",account);
-        }else {
+        if (update == 1) {
+            return CommonResult.success("修改成功", account);
+        } else {
             return CommonResult.failed("修改失败");
         }
     }
 
     @PostMapping("/addAccount")
-    public CommonResult addAccount(Account account){
-        if (accountMapper.insert(account)==1){
-            return CommonResult.success("添加成功",account);
-        }else {
+    public CommonResult addAccount(Account account) {
+        if (accountMapper.insert(account) == 1) {
+            return CommonResult.success("添加成功", account);
+        } else {
             return CommonResult.failed("添加失败");
         }
     }
 
     @DeleteMapping("DeleteAccount")
-    public CommonResult deleteAccount(Account account){
-        if (accountMapper.deleteById(account)==1){
+    public CommonResult deleteAccount(Account account) {
+        if (accountMapper.deleteById(account) == 1) {
             return CommonResult.success("删除成功");
-        }else {
+        } else {
             return CommonResult.failed("删除失败");
         }
     }
-
 }
-

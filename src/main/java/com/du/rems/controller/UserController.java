@@ -33,34 +33,31 @@ public class UserController {
     private IUserService userService;
 
     @GetMapping("/queryUserList")
-    public CommonResult queryUserList(){
+    public CommonResult queryUserList() {
         List<User> userList = userMapper.selectList(null);
         for (User user : userList) {
             System.out.println(user);
         }
         return CommonResult.success(userList);
     }
+
     @GetMapping("/queryUser")
-    public CommonResult queryUser(@RequestBody User user){
+    public CommonResult queryUser(@RequestBody User user) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("id",user.getId())
-                .or().eq("username",user.getUsername())
-                .or().eq("telephone",user.getTelephone())
-                .or().eq("email",user.getEmail());
+        queryWrapper.eq("id", user.getId())
+                .or().eq("username", user.getUsername())
+                .or().eq("telephone", user.getTelephone())
+                .or().eq("email", user.getEmail());
         User user1 = userMapper.selectOne(queryWrapper);
-        if (user1!= null){
-            return CommonResult.success("查询成功",user1);
-        }else {
+        if (user1 != null) {
+            return CommonResult.success("查询成功", user1);
+        } else {
             return CommonResult.failed();
         }
     }
 
     @PostMapping("/addUser")
     public CommonResult addUser(@RequestBody User user){
-        String rawPassword = user.getPassword();
-        String password = SecureUtil.md5(rawPassword);
-        SecureUtil.md5(password);
-        user.setPassword(password);
         if (userMapper.insert(user) == 1){
             return  CommonResult.success("注册成功",user) ;
         } else {
@@ -69,7 +66,7 @@ public class UserController {
     }
     @DeleteMapping("/deleteUser")
     public CommonResult deleteUser(User user){
-        if (userService.deleteUserByIdOrUsername(user)==1){
+        if (userMapper.deleteById(user)==1){ //?
             return CommonResult.success("删除成功") ;
         }else {
             return CommonResult.failed("删除失败");
@@ -77,13 +74,12 @@ public class UserController {
 
     }
     @PutMapping("/updateUser")
-    public CommonResult updateUser(User user){
+    public CommonResult updateUser(User user) {
         int update = userMapper.updateById(user);
-        if (update==1){
-            return CommonResult.success("修改成功",user) ;
-        }else {
+        if (update == 1) {
+            return CommonResult.success("修改成功", user);
+        } else {
             return CommonResult.failed("修改失败");
         }
     }
 }
-

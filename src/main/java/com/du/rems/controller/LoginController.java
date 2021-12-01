@@ -46,11 +46,10 @@ public class LoginController {
                     .put("username",user.getUsername())
                     .put("telephone",user.getTelephone())
                     .put("email",user.getEmail())
-                    .put("sum_money",user.getSumMoney())
-                    .put("money_spend",user.getMoneySpend())
                     .map()
             );
         }
+
     }
 
     //需要认证权限才能退出登录
@@ -61,3 +60,4 @@ public class LoginController {
         return CommonResult.success(null);
     }
 }
+

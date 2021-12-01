@@ -35,9 +35,10 @@ public class RecordController {
     private UserMapper userMapper;
 
     @GetMapping("/queryRecordList")
-    public CommonResult queryRecordList(){
-        List<Record> recordList = recordMapper.queryRecordList();
-        for (Record record: recordList){
+    public CommonResult queryRecordList() {
+        QueryWrapper<Record> objectQueryWrapper = new QueryWrapper<>(null);
+        List<Record> recordList = recordMapper.selectList(objectQueryWrapper);
+        for (Record record : recordList) {
             System.out.println(record);
         }
         return CommonResult.success(recordList);
@@ -46,23 +47,23 @@ public class RecordController {
     @GetMapping("/queryRecordById")
     public CommonResult queryRecordById(Integer id) {
 
-        return CommonResult.success(recordMapper.selectById(id)) ;
+        return CommonResult.success(recordMapper.selectById(id));
     }
 
     @PostMapping("/addRecord")
-    public CommonResult addRecord(@RequestBody Record record){
+    public CommonResult addRecord(@RequestBody Record record) {
 
 //        QueryWrapper<Record> queryWrapper = new QueryWrapper<>();
 //        queryWrapper.eq("user_id",record.getUserId());
 //        Record record1 = recordMapper.selectOne(queryWrapper);
 //
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("id",record.getUserId());
+        queryWrapper.eq("id", record.getUserId());
         User user = userMapper.selectOne(queryWrapper);
-        if (recordMapper.insert(record)==1){
-            user.setMoneySpend(user.getMoneySpend()+record.getSpendMoney());
-            return CommonResult.success("添加成功",record) ;
-        }else {
+        if (recordMapper.insert(record) == 1) {
+//            user.setMoneySpend(user.getMoneySpend() + record.getSpendMoney());
+            return CommonResult.success("添加成功", record);
+        } else {
             return CommonResult.failed("添加失败");
         }
     }
@@ -84,6 +85,4 @@ public class RecordController {
         }
     }
 
-
 }
-
