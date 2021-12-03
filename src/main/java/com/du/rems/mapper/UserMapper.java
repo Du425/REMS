@@ -2,8 +2,6 @@ package com.du.rems.mapper;
 
 import com.du.rems.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -11,10 +9,8 @@ import org.springframework.stereotype.Repository;
  * </p>
  *
  * @author Du425
- * @since 2021-12-01
+ * @since 2021-12-02
  */
-@Mapper
-@Repository
 public interface UserMapper extends BaseMapper<User> {
 
 }

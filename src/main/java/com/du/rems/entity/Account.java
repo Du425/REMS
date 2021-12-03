@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 
 /**
  * <p>
@@ -13,10 +12,9 @@ import lombok.Data;
  * </p>
  *
  * @author Du425
- * @since 2021-12-01
+ * @since 2021-12-02
  */
 @ApiModel(value = "Account对象", description = "")
-@Data
 public class Account implements Serializable {
 
     private static final long serialVersionUID = 1L;
