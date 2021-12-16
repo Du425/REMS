@@ -1,0 +1,48 @@
+spring:
+  datasource:
+    username: root
+    password: DST773344
+    url: jdbc:mysql://localhost:33060/blog?serverTimeZone=UTC&useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  thymeleaf:
+    cache: false
+    servlet:
+      content-type: text/html
+  messages:
+    basename: i18n.login
+  profiles:
+    active: dev
+  ###redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        max-idle: 8
+        min-idle: 0
+        max-active: 8
+        max-wait: -1
+    timeout: 0
+
+mybatis-plus:
+  type-aliases-package: com.du.blog.entity
+  mapper-locations: classpath:mapper/*.xml
+  global-config:
+    db-config:
+      logic-delete-field: delFlag  # 全局逻辑删除的实体字段名
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+
+shiro-redis:
+  enabled: true
+  redis-manager:
+    host: arros.cn:6379
+    #    host: 47.113.217.84:6379
+    #    host: 127.0.0.1:6379
+    password: jinxuyang123
+
+du:
+  jwt:
+    secret: afwragviuxjqcedveioskd
+    expire: 604800
+    header: Authorization

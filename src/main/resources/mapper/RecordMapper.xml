@@ -2,4 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.du.rems.mapper.RecordMapper">
 
+    <resultMap id="RecordResult" type="com.du.rems.entity.Record">
+        <result property="rid" column="rid"/>
+        <result property="spendMoney" column="spend_money"/>
+        <result property="userId" column="user_id"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="time" column="time"/>
+        <result property="remarks" column="remark"/>
+        <result property="accountId" column="account_id"/>
+
+        <association property="userId" column="user_id" javaType="com.du.rems.entity.User"
+                     resultMap="com.du.rems.mapper.UserMapper.User"/>
+        <association property="categoryId" column="category_id" javaType="com.du.rems.entity.Category"
+                     resultMap="com.du.rems.mapper.CategoryMapper.category"/>
+
+    </resultMap>
 </mapper>
