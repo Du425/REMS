@@ -1,11 +1,10 @@
 package com.du.rems.entity;
 
-import com.baomidou.mybatisplus.annotation.*;
-
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -15,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * </p>
  *
  * @author Du425
- * @since 2021-12-02
+ * @since 2021-12-20
  */
 @ApiModel(value = "Record对象", description = "")
 public class Record implements Serializable {
@@ -25,17 +24,14 @@ public class Record implements Serializable {
     @TableId(value = "rid", type = IdType.AUTO)
     private Integer rid;
 
-    @TableField(fill = FieldFill.INSERT)
     private BigDecimal spendMoney;
 
     private Integer userId;
 
     private Integer categoryId;
 
-    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime time;
 
-    @TableLogic
     private String remarks;
 
     private Integer accountId;

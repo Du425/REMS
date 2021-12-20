@@ -9,6 +9,7 @@ import com.du.rems.mapper.UserMapper;
 import com.du.rems.response.CommonResult;
 import com.du.rems.service.IRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
@@ -51,15 +52,15 @@ public class RecordController {
     }
 
     @PostMapping("/addRecord")
-    public CommonResult addRecord(@RequestBody Record record) {
+    public CommonResult addRecord(@Validated @RequestBody Record record) {
 
 //        QueryWrapper<Record> queryWrapper = new QueryWrapper<>();
 //        queryWrapper.eq("user_id",record.getUserId());
 //        Record record1 = recordMapper.selectOne(queryWrapper);
 //
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("id", record.getUserId());
-        User user = userMapper.selectOne(queryWrapper);
+//        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.eq("id", record.getUserId());
+//        User user = userMapper.selectOne(queryWrapper);
         if (recordMapper.insert(record) == 1) {
 //            user.setMoneySpend(user.getMoneySpend() + record.getSpendMoney());
             return CommonResult.success("添加成功", record);

@@ -17,4 +17,16 @@
                      resultMap="com.du.rems.mapper.CategoryMapper.category"/>
 
     </resultMap>
+
+<!--    <sql id="selectRecordVo">-->
+<!--        select-->
+<!--    </sql>-->
+
+
+<!--    <select id="selectRecordVo" resultType="com.du.rems.entity.Record">-->
+<!--        -->
+
+<!--    </select>-->
+<!--    <select id="selectMaps" resultType="java.util.Map"></select>-->
+
 </mapper>

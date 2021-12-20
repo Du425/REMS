@@ -12,7 +12,7 @@ import io.swagger.annotations.ApiModelProperty;
  * </p>
  *
  * @author Du425
- * @since 2021-12-02
+ * @since 2021-12-20
  */
 @ApiModel(value = "Category对象", description = "")
 public class Category implements Serializable {
@@ -22,7 +22,7 @@ public class Category implements Serializable {
     @TableId(value = "cid", type = IdType.AUTO)
     private Integer cid;
 
-    private String categoryName;
+    private String type;
 
 
     public Integer getCid() {
@@ -33,19 +33,19 @@ public class Category implements Serializable {
         this.cid = cid;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getType() {
+        return type;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
     public String toString() {
         return "Category{" +
         "cid=" + cid +
-        ", categoryName=" + categoryName +
+        ", type=" + type +
         "}";
     }
 }
