@@ -6,7 +6,6 @@ import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.du.rems.dto.LoginDto;
 import com.du.rems.entity.User;
-import com.du.rems.mapper.AccountMapper;
 import com.du.rems.response.CommonResult;
 import com.du.rems.service.IUserService;
 import com.du.rems.util.JwtUtil;
@@ -19,14 +18,14 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("/log")
+@RequestMapping("/login")
 public class LoginController {
     @Autowired
     IUserService iUserService;
     @Autowired
     JwtUtil jwtUtil;
 
-    @PostMapping("/login")
+    @PostMapping
     public CommonResult login(@Validated @RequestBody LoginDto loginDto, HttpServletResponse response){
         User user = iUserService.getOne(new UpdateWrapper<User>().eq("username", loginDto.getUsername()));
         Assert.notNull(user,"用户不存在");
@@ -47,11 +46,10 @@ public class LoginController {
                     .map()
             );
         }
-
     }
 
     //需要认证权限才能退出登录
-    @RequiresAuthentication
+//    @RequiresAuthentication
     @GetMapping("/logout")
     public CommonResult logout(){
         SecurityUtils.getSubject().logout();

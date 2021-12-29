@@ -22,7 +22,7 @@ public class Account implements Serializable {
     @TableId(value = "aid", type = IdType.AUTO)
     private Integer aid;
 
-    private String type;
+    private String accounts;
 
 
     public Integer getAid() {
@@ -33,19 +33,19 @@ public class Account implements Serializable {
         this.aid = aid;
     }
 
-    public String getType() {
-        return type;
+    public String getAccounts() {
+        return accounts;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setAccounts(String type) {
+        this.accounts = type;
     }
 
     @Override
     public String toString() {
         return "Account{" +
         "aid=" + aid +
-        ", type=" + type +
+        ", type=" + accounts +
         "}";
     }
 }

@@ -3,7 +3,6 @@ package com.du.rems.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.du.rems.entity.Record;
-import com.du.rems.entity.User;
 import com.du.rems.mapper.RecordMapper;
 import com.du.rems.mapper.UserMapper;
 import com.du.rems.response.CommonResult;
@@ -11,8 +10,6 @@ import com.du.rems.service.IRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import org.springframework.stereotype.Controller;
 
 import java.util.List;
 

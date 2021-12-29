@@ -39,8 +39,8 @@ public class CategoryController {
     }
 
     @PostMapping("/addCategory")
-    public CommonResult addCategory(Category category){
-        if (categoryMapper.insert(category)==1){
+    public CommonResult addCategory(@RequestBody Category category){
+        if (categoryMapper.insert(category) == 1){
             return CommonResult.success("添加成功",category);
         }else {
             return CommonResult.failed("添加失败");

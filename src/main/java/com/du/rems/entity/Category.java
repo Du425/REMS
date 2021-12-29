@@ -22,7 +22,7 @@ public class Category implements Serializable {
     @TableId(value = "cid", type = IdType.AUTO)
     private Integer cid;
 
-    private String type;
+    private String category;
 
 
     public Integer getCid() {
@@ -33,19 +33,19 @@ public class Category implements Serializable {
         this.cid = cid;
     }
 
-    public String getType() {
-        return type;
+    public String getCategory() {
+        return category;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @Override
     public String toString() {
         return "Category{" +
         "cid=" + cid +
-        ", type=" + type +
+        ", category=" + category +
         "}";
     }
 }
