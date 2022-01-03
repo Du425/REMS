@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
-@RestController
-public class MailController {
-
-    @Resource
-    private JavaMailSenderImpl javaMailSender;
-
-    @RequestMapping("/sendmail")
-    public void send(){
-        SimpleMailMessage message = new SimpleMailMessage();
-
-        message.setFrom("15929993389@163.com");
-        message.setTo();
-    }
-}
+//@RestController
+//public class MailController {
+//
+//    @Resource
+//    private JavaMailSenderImpl javaMailSender;
+//
+//    @RequestMapping("/sendmail")
+//    public void send(){
+//        SimpleMailMessage message = new SimpleMailMessage();
+//
+//        message.setFrom("15929993389@163.com");
+//        message.setTo();
+//    }
+//}

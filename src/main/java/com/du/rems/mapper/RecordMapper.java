@@ -1,6 +1,7 @@
 package com.du.rems.mapper;
 
 import cn.hutool.core.date.DateTime;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.du.rems.entity.Record;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
@@ -19,5 +20,6 @@ import java.util.List;
 @Mapper
 public interface RecordMapper extends BaseMapper<Record> {
 
-    List<Record> queryRecordByTime(@Param("beginTime")DateTime beginTime, @Param("endTime") DateTime endTime);
+//    List<Record> queryRecordByTime(@Param("beginTime")DateTime beginTime, @Param("endTime") DateTime endTime);
+    Page<Record> queryRecordByTime(String startTime, String endTime);
 }

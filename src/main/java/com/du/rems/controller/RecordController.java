@@ -7,6 +7,8 @@ import com.du.rems.mapper.RecordMapper;
 import com.du.rems.mapper.UserMapper;
 import com.du.rems.response.CommonResult;
 import com.du.rems.service.IRecordService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -82,5 +84,16 @@ public class RecordController {
             return CommonResult.failed("更新失败");
         }
     }
+
+    @GetMapping("/queryRecordByTime")
+    public CommonResult queryRecordByTime(@PathVariable String startTime, String endTime){
+//        PageInfo<Record> pageInfo = new PageInfo<>(recordMapper.queryRecordByTime(startTime, endTime));
+//        return CommonResult.success("查询成功",pageInfo);
+
+        return CommonResult.success(recordMapper.queryRecordByTime(startTime, endTime));
+
+    }
+
+
 
 }
