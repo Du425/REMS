@@ -10,9 +10,12 @@ import com.du.rems.service.IRecordService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -86,11 +89,15 @@ public class RecordController {
     }
 
     @GetMapping("/queryRecordByTime")
-    public CommonResult queryRecordByTime(@PathVariable String startTime, String endTime){
+    public CommonResult queryRecordByTime(@RequestParam(required = false) String startTime,
+                                          @RequestParam(required = false) String endTime){
 //        PageInfo<Record> pageInfo = new PageInfo<>(recordMapper.queryRecordByTime(startTime, endTime));
 //        return CommonResult.success("查询成功",pageInfo);
 
-        return CommonResult.success(recordMapper.queryRecordByTime(startTime, endTime));
+
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        return CommonResult.success(recordMapper.queryRecordByTime(startTime,endTime));
 
     }
 

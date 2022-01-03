@@ -8,7 +8,7 @@
         <result property="userId" column="user_id"/>
         <result property="categoryId" column="category_id"/>
         <result property="time" column="time"/>
-        <result property="remarks" column="remark"/>
+        <result property="remarks" column="remarks"/>
         <result property="accountId" column="account_id"/>
 
         <association property="userId" column="user_id" javaType="com.du.rems.entity.User"
@@ -18,19 +18,18 @@
 
     </resultMap>
 
-    <select id="queryRecordByTime" resultType="com.du.rems.entity.Record" parameterType="String">
-        select rid, spend_money, user_id ,category_id, time, remark, account_id
+    <select id="queryRecordByTime" resultMap="RecordResult">
+        select rid, spend_money, user_id ,category_id, `time`, remarks, account_id
         from record
---         where time between #{startTime} and #{endTime}
         <where>
-            <if test="startTime == null and startTime == ''">
-                time &lt;= #{endTime}
+            <if test="(startTime == null || startTime == '') and (endTime != null || endTime == '')">
+                time &lt;= date(#{endTime})
             </if>
-            <if test="endTime == null and endTime == ''">
-                time &gt;= #{startTime}
+            <if test="(endTime == null || endTime == '') and (startTime != null || startTime == '')">
+               time &gt;= date(#{startTime})
             </if>
             <if test="startTime != null and startTime != '' and endTime != null and endTime != ''">
-                time between #{startTime} and #{endTime}
+              `time` between date(#{startTime}) and date(#{endTime})
             </if>
         </where>
     </select>
