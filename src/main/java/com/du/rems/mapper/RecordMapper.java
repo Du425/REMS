@@ -1,8 +1,12 @@
 package com.du.rems.mapper;
 
+import cn.hutool.core.date.DateTime;
 import com.du.rems.entity.Record;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +19,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface RecordMapper extends BaseMapper<Record> {
 
+    List<Record> queryRecordByTime(@Param("beginTime")DateTime beginTime, @Param("endTime") DateTime endTime);
 }

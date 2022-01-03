@@ -17,8 +17,9 @@ public class BaseController {
     public Object handlerException(Exception e){
         ErrorMsgType responseData;
 
-        if (e instanceof BusinessException){
-
-        }
+//        if (e instanceof BusinessException){
+//
+//        }
+        return null;
     }
 }

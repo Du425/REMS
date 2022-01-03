@@ -18,15 +18,21 @@
 
     </resultMap>
 
-<!--    <sql id="selectRecordVo">-->
-<!--        select-->
-<!--    </sql>-->
-
-
-<!--    <select id="selectRecordVo" resultType="com.du.rems.entity.Record">-->
-<!--        -->
-
-<!--    </select>-->
-<!--    <select id="selectMaps" resultType="java.util.Map"></select>-->
+    <select id="queryRecordByTime" resultType="com.du.rems.entity.Record" parameterType="String">
+        select rid, spend_money, user_id ,category_id, time, remark, account_id
+        from record
+--         where time between #{startTime} and #{endTime}
+        <where>
+            <if test="startTime == null and startTime == ''">
+                time &lt;= #{endTime}
+            </if>
+            <if test="endTime == null and endTime == ''">
+                time &gt;= #{startTime}
+            </if>
+            <if test="startTime != null and startTime != '' and endTime != null and endTime != ''">
+                time between #{startTime} and #{endTime}
+            </if>
+        </where>
+    </select>
 
 </mapper>
