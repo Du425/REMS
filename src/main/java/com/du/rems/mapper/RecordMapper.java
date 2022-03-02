@@ -20,4 +20,6 @@ public interface RecordMapper extends BaseMapper<Record> {
 
 //    List<Record> queryRecordByTime(@Param("beginTime")DateTime beginTime, @Param("endTime") DateTime endTime);
     List<Record> queryRecordByTime(@Param("startTime") String startTime,@Param("endTime") String endTime);
+
+    List<Record> queryRecordByKeyword(@Param("keyword") String keyword);
 }

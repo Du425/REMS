@@ -21,7 +21,7 @@ public class CodeGenerator {
      * 数据源配置
      */
     private static final DataSourceConfig.Builder DATA_SOURCE_CONFIG = new DataSourceConfig
-            .Builder("jdbc:mysql://localhost:33060/rems",
+            .Builder("jdbc:mysql://47.113.217.84:3306/rems",
             "root",
             "DST773344");
 

@@ -3,6 +3,7 @@ import com.du.rems.entity.Category;
 import com.du.rems.entity.Record;
 import com.du.rems.mapper.CategoryMapper;
 import com.du.rems.response.CommonResult;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,7 @@ import java.util.List;
  * @author Du425
  * @since 2021-11-06
  */
+@Api(tags = "分类管理")
 @RestController
 @RequestMapping("/category")
 public class CategoryController {

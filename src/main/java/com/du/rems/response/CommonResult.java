@@ -54,7 +54,7 @@ public class CommonResult {
      * @return
      */
     public static CommonResult failed(){
-        return new CommonResult(ResultType.FAILED.getCode(),ResultType.FAILED.getMessage(),null);
+        return new CommonResult(ResultType.COMMON_FAIL.getCode(),ResultType.COMMON_FAIL.getMessage(),null);
     }
 
     /**
@@ -63,7 +63,7 @@ public class CommonResult {
      * @return
      */
     public static CommonResult failed(String message){
-        return new CommonResult(ResultType.FAILED.getCode(),message,null);
+        return new CommonResult(ResultType.COMMON_FAIL.getCode(),message,null);
     }
 
     /**
@@ -72,7 +72,7 @@ public class CommonResult {
      * @return
      */
     public static CommonResult failed(Object data){
-        return new CommonResult(ResultType.FAILED.getCode(),ResultType.FAILED.getMessage(),data);
+        return new CommonResult(ResultType.COMMON_FAIL.getCode(),ResultType.COMMON_FAIL.getMessage(),data);
     }
 
     /**
@@ -82,7 +82,7 @@ public class CommonResult {
      * @return
      */
     public static CommonResult failed(String message,Object data){
-        return new CommonResult(ResultType.FAILED.getCode(),message,data);
+        return new CommonResult(ResultType.COMMON_FAIL.getCode(),message,data);
     }
 
     /**

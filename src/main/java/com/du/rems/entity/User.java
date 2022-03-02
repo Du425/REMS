@@ -37,6 +37,23 @@ public class User implements Serializable {
 
     private BigDecimal moneySpend;
 
+    public User() {
+    }
+
+    public User(User user) {
+        this.id = user.getId();
+        this.nick = user.getNick();
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.telephone = user.getTelephone();
+        this.email = user.getEmail();
+        this.sumMoney = user.getSumMoney();
+        this.moneySpend = user.getMoneySpend();
+    }
+
+    public User(String username) {
+        this.username = username;
+    }
 
     public Integer getId() {
         return id;

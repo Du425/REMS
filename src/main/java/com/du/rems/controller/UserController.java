@@ -9,6 +9,7 @@ import com.du.rems.entity.User;
 import com.du.rems.mapper.UserMapper;
 import com.du.rems.response.CommonResult;
 import com.du.rems.service.IUserService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
 import org.springframework.validation.annotation.Validated;
@@ -27,6 +28,8 @@ import java.util.Map;
  * @author Du425
  * @since 2021-11-06
  */
+
+@Api(tags = "用户管理")
 @RestController
 @RequestMapping("/user")
 public class UserController {

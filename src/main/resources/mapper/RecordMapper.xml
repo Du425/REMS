@@ -34,4 +34,18 @@
         </where>
     </select>
 
+    <select id="queryRecordByKeyword" resultMap="RecordResult" resultType="com.du.rems.entity.Record">
+        select r.rid, r.spend_money,r.user_id,r.category_id,r.`time`,r.remarks,r.account_id,
+               a.aid, a.accounts, c.cid, c.category
+        from rems.record r
+        left join rems.account a on r.account_id = a.aid
+        left join rems.category c on r.category_ud = c.cid
+        where r.spend_money like CONCAT ('%', #{keyword}, '%')
+        or r.remarks like CONCAT ('%', #{keyword}, '%')
+        or a.accounts like CONCAT ('%', #{keyword}, '%')
+        or c.category like CONCAT ('%', #{keyword}, '%')
+
+    </select>
+
+
 </mapper>

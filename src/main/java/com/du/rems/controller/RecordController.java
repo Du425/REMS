@@ -9,6 +9,7 @@ import com.du.rems.response.CommonResult;
 import com.du.rems.service.IRecordService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
@@ -26,6 +27,8 @@ import java.util.List;
  * @author Du425
  * @since 2021-11-06
  */
+
+@Api(tags = "记录管理")
 @RestController
 @RequestMapping("/record")
 public class RecordController {
@@ -100,6 +103,18 @@ public class RecordController {
         return CommonResult.success(recordMapper.queryRecordByTime(startTime,endTime));
 
     }
+
+    @GetMapping("/queryRecordByKeyword/{keyword}")
+    public CommonResult queryRecordByKeyword(@PathVariable String keyword){
+        List<Record> recordList = recordMapper.queryRecordByKeyword(keyword);
+        for (Record record : recordList) {
+            System.out.println(record);
+        }
+        if (recordList != null) return CommonResult.success("查询成功",recordList);
+        else return CommonResult.failed("查询失败");
+
+    }
+
 
 
 
